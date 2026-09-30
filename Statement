@@ -1,0 +1,33 @@
+# Problem Statement
+
+## Problem statement
+Small and mid-sized schools often keep student records in paper registers or loose spreadsheets. This makes it slow to look up a student, easy to create duplicate roll numbers, hard to correct mistakes, and impossible to control who can open the records. A lightweight, offline, login-protected tool is needed so that school staff can create, find, correct and remove student records reliably.
+
+## Scope of the project
+**In scope**
+- Login gate with three role accounts (Principal, Teacher, Student) and a 3-attempt limit.
+- CRUD on student records: add, search by ID, list all, update a single field, delete.
+- Input validation (no blank fields, numeric-only IDs and menu choices, duplicate roll number check).
+- Persistent storage in a local SQLite database (`school_data.db`).
+- Console (CLI) interface.
+
+**Out of scope (current version)**
+- Role-based permissions per operation, password hashing, and audit logging.
+- Attendance, marks, fees, timetable and other school modules.
+- Web or GUI front-end, multi-user network access.
+
+## Target users
+| User | Purpose |
+|------|---------|
+| Principal | Administers records; full access |
+| Teacher / office staff | Looks up and maintains student details |
+| Student / guest | Signs in with the guest account to use the system |
+
+## High-level features
+1. **Authentication** - username/password check with three attempts.
+2. **Add student** - roll number, name, class, section, guardian phone.
+3. **Search student** - fetch a record by student ID.
+4. **View all students** - ordered list with total count.
+5. **Update student** - change name, class, section or phone.
+6. **Delete student** - remove a record by ID.
+7. **Safe input handling** - re-prompts on blank or non-numeric input; parameterised SQL queries.
